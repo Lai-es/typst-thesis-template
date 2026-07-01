@@ -1,3 +1,6 @@
+#import "@preview/subpar:0.2.2"
+#import "@preview/hydra:0.6.2": hydra
+
 #let in-outline = state("in-outline", false)
 
 #let caption(short, details) = context {
@@ -6,14 +9,49 @@
 
 #let todo(lol) = text(weight: "bold", fill: red, [TODO: ]+ lol)
 
+#let subfig-grid(..args) = subpar.grid(
+  align:top+start,
+  numbering-sub: "A",
+  numbering-sub-ref: (..nums) => numbering("1A", ..nums),
+  show-sub-caption: (num, it) => {
+    set text(size: 1.5em) //big numeration
+    // subcaption numbering
+    text(weight: "bold", num)
+    // it.separator
+    // subcaption body
+    it.body
+  },
+  show-sub: it => {
+    set figure.caption(position: top)
+    it
+  },
+ ..args
+)
 
+#let subfig-grid-attachments(..args) = subpar.grid(
+  align:top+start,
+  numbering-sub: "A",
+  numbering-sub-ref: (..nums) => numbering("S1A", ..nums),
+  show-sub-caption: (num, it) => {
+    set text(size: 1.5em) //big numeration
+    // subcaption numbering
+    text(weight: "bold", num)
+    // it.separator
+    // subcaption body
+    it.body
+  },
+  show-sub: it => {
+    set figure.caption(position: top)
+    it
+  },
+ ..args
+)
+
+#let upmu = [~$upright(mu) "l"$]
 // ===========================================================
 #let template(title-page: {},
 declaration: {},
 acknowledgements: {}, abstract: {}, abbreviations: {}, body) = context{[
-
-#import "@preview/hydra:0.6.2": hydra
-#import "@preview/subpar:0.2.2": *
 
 //----page formatting============================
 #set page(margin: (x: 2.5cm, y: 2.5cm),

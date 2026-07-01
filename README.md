@@ -42,7 +42,7 @@ Furthermore, the TODO-function is a small QoL-improvement, allowing for highligh
 Finally, the custom subfigure-function automatically numbers the subfigures with A,B,C... above the top-left corner of the figure:
 
 ```typ
-#subfigure(columns: 2,
+#subfig-grid(columns: 2,
 figure(.., caption: []),
 figure(.., caption: []),
 ..,

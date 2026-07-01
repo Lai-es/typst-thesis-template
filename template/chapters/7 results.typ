@@ -1,36 +1,34 @@
 #import "../lib.typ":*
-#import "@preview/subpar:0.2.2"
 
 #let results() = [
-  
-  // nice subfigures
-#let my-subfig(..args) = subpar.grid(
-  align:top+start,
-  numbering-sub: "A",
-  numbering-sub-ref: (..nums) => numbering("1A", ..nums),
-  show-sub-caption: (num, it) => {
-    set text(size: 1.5em) //big numeration
-    // subcaption numbering
-    text(weight: "bold", num)
-    // it.separator
-    // subcaption body
-    it.body
-  },
-  show-sub: it => {
-    set figure.caption(position: top)
-    it
-  },
- ..args
-) 
 
 == Lorem ipsum <lorem>
-#lorem(20) @sdfas #lorem(20) @Gratani2023 #lorem(20).
+We are here in @lorem. You could also write that as @lorem[Chapter]
 
-@sdfas #lorem(20)
+Citations are grouped automatically for more than three citations @Gratani2023@Abida2021. If we add one more, the citations are connected with a hyphen: @Gratani2023@Abida2021@Abramson2024. Cool, right?
 
-@sdfas #lorem(20) @sdfas. #lorem(20)
+@subfigure is not the same as @asubfigure, attachment figures are numbered and referenced with a "S", however i havent found a good solution to reference attachment subfigure-grids as a whole: @agreatplot and @greatplot.
 
-Finally, @sdfas #lorem(20) @Gratani2023), and therefore we need more money. 
 
+Finally,  #lorem(20) @Gratani2023), and therefore we need more money. 
+
+#subfig-grid(columns:2, rows:2,
+ figure(rect[#lorem(60)], 
+ caption: []),<subfigure>,
+ 
+ figure(rect[#lorem(60)], 
+ caption: []),
+ 
+ figure(rect[#lorem(60)], 
+ caption: []),
+ 
+ figure(rect[#lorem(60)], 
+ caption: []),
+ 
+ //figure(image("Path/to/image.png"),caption: []),
+ 
+ caption: [#caption[This is a short caption][This is a extension that is only shown in the descriptions but not in the outline]],//total caption
+ label: <greatplot>
+ )
 
 ]
