@@ -7,22 +7,21 @@
 
 #import "@preview/clean-ut:0.1.0": *
 
-#import "chapters/1 official title n declar.typ": titlepage, declaration
-#import "chapters/2 abstract.typ": abstract
-#import "chapters/3 acknowledgements.typ": acknowledgements
-#import "chapters/4 abbreviations.typ": abbreviations
-#import "chapters/5 introduction.typ": introduction
-#import "chapters/6 materials and methods.typ": methods 
-#import "chapters/7 results.typ": results
-#import "chapters/8 summary.typ": summary
-#import "chapters/9 bibliography.typ": bibliography-literature
-#import "chapters/10 attachements.typ": attachements
+#show: template //imports the styling
 
+#include "chapters/1 title page.typ"
 
-#show: template.with(title-page: titlepage(), 
-declaration: declaration(),
-acknowledgements: acknowledgements(), abstract: abstract(), abbreviations: abbreviations())
+#include "chapters/2 declaration.typ"
 
+#include "chapters/3 abstract.typ"
+
+#include "chapters/4 acknowledgements.typ"
+
+#show-outlines() //shows table of contents, list of figures, list of tables and list of abbreviations
+
+#include "chapters/5 abbreviations.typ"
+
+#show-header() //shows the header from now on
 
 = #text(fill: red)[How to use this template and general typst tips] <tips>
 
@@ -30,42 +29,25 @@ acknowledgements: acknowledgements(), abstract: abstract(), abbreviations: abbre
 
 - reference label: works for labels \@label_name and publication identifiers \@publication_name Heading reference: @tips, Publication reference: @Abida2021 (Publication automatically get added to the two-column bibliography after the discussion)
 
-- Lists can be made by adding a \- before a new text line, enumberated lists can be made by adding a \+ likewise 
+- Lists can be made by adding a \- before a new text line, enumerated lists can be made by adding a \+ likewise 
 
-- Making figures: see next pages for exampels 
+- Making figures: see next pages for examples 
 
 - Making tables: if you find it too tedious to input the weird table syntax and want to upload from excel, word or some other format; there are online converters: https://www.latex-tables.com/
 
 
 #todo("you should delete this chapter")
 
-= Introduction 
+#include "chapters/6 introduction.typ"
 
-#introduction()
-// #pagebreak()
+#include "chapters/7 materials and methods.typ"
 
-= Materials and Methods
+#include "chapters/8 results.typ"
 
-#methods()
-#pagebreak()
+#include "chapters/9 summary.typ"
 
+#include "chapters/10 bibliography.typ"
 
-= Results
-
-#results()
-// #pagebreak()
-
-= Discussion
-
-#summary()
-
-#pagebreak()
-
-#bibliography-literature()
-
-#heading([Supplementary information], numbering: none, depth: 1)
-
-
-#attachements()
+#include "chapters/11 attachements.typ"
 
 
