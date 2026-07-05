@@ -3,6 +3,7 @@
 
 #let in-outline = state("in-outline", false)
 
+//custom caption function to show the short version in the outline and the long version in the figure
 #let caption(short, details) = context {
   if in-outline.get() {
     short
@@ -11,8 +12,10 @@
   }
 }
 
+// todo helper
 #let todo(stuff) = text(weight: "bold", fill: red, [TODO: ] + stuff)
 
+// numbered subfigure grid
 #let subfig-grid(..args) = subpar.grid(
   align: top + start,
   numbering-sub: "A",
@@ -32,6 +35,7 @@
   ..args,
 )
 
+//numbered subfigure grid, special attachment numbering
 #let subfig-grid-attachments(..args) = subpar.grid(
   align: top + start,
   numbering-sub: "A",
@@ -51,10 +55,11 @@
   ..args,
 )
 
-#let upmu = [~$upright(mu) "l"$]
+// shorthand for the upright mu letter
+#let upmu = [~$upright(mu)$]
 
-//============Function to show outline, list of figures, list of tables and list of abbreviations
-#let show-outlines() = {
+//--------------Function to show outline, list of figures, list of tables and list of abbreviations
+#let outlines = {
   //----Table of Contents
   //heading level 1 bold
   page(numbering: "I")[
@@ -101,8 +106,8 @@
   show link: it => strong(text(blue, it))
 }
 
-//==========================Header================================
-#let show-header() = {
+//==========================Header design=========================
+#let page-header = {
   set page(
     header: [
       #set text(size: 12pt)
@@ -116,10 +121,10 @@
 }
 
 // ===========================Template================================
-#let template() = context {
+#let template = {
   [
 
-//----page formatting============================
+//=========================Page formatting============================
 #set page(
   margin: (x: 2.5cm, y: 2.5cm),
   paper: "a4",
@@ -129,6 +134,7 @@
 #set par(justify: true, linebreaks: "optimized")
 
 #set heading(numbering: "1.1.1.a.")
+
 #set text(
   font: "TeX Gyre Heros", //Helvetica
   lang: "en",

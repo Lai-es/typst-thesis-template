@@ -6,6 +6,7 @@ https://www.bruot.org/ris2bib/
 https://www.bibtex.com/c/pmid-to-bibtex-converter/
 */
 #heading(numbering: none, [Bibliography])
+
 #bibliography(
     "bibliography.bib",
     title: none,

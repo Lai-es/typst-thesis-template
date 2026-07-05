@@ -1,3 +1,5 @@
+#import "@preview/clean-ut:0.1.0":*
+
 #heading([Supplementary information], numbering: none, depth: 1)
 
 // ------change figure numbering-------
