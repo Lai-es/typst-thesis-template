@@ -1,7 +1,7 @@
-#set page(
+#page(
   paper: "a4",
   margin: (top: 3cm, left: 3cm, right: 3cm, bottom: 3cm),
-)
+)[
 
 #set text(weight: "bold", font: "TeX Gyre Heros", size: 20pt, lang: "de", hyphenate: false)
 #set par(justify: false)
@@ -18,6 +18,6 @@
 
 #v(1fr)
 
-vorgelegt von #str("\n\n") Surname, Name #str("\n") Tübingen, November 2025])
-
+vorgelegt von #str("\n\n") Surname, Name #str("\n") Tübingen, #datetime.today().display("[month repr:long] [year repr:full]")])
+]
 #pagebreak()

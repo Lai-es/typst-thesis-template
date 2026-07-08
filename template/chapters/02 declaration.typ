@@ -1,8 +1,8 @@
 // declaration of independence
-#set page(
+#page(
   paper: "a4",
   margin: (top: 3cm, left: 3cm, right: 3cm, bottom: 3cm),
-)
+)[
 
 #set text(
   size: 12pt,
@@ -25,5 +25,5 @@ Hiermit erkläre ich,
 Tübingen, den #datetime.today().display("[day].[month].[year]")
 
 Your name
-
+]
 #pagebreak()

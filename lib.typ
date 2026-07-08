@@ -60,10 +60,11 @@
 
 //--------------Function to show outline, list of figures, list of tables and list of abbreviations
 #let outlines = {
+
+  show link: set text(weight: "medium", fill: black) //reset link styling for the outline
   //----Table of Contents
-  //heading level 1 bold
   page(numbering: "I")[
-    #show outline.entry.where(level: 1): it => {
+    #show outline.entry.where(level: 1): it => {//heading level 1 bold
       set text(1.2em, weight: "bold")
       v(1.5em, weak: true)
       it
@@ -102,8 +103,6 @@
     #outline(title: none, target: figure.where(kind: table))
   ]
   pagebreak()
-
-  show link: it => strong(text(blue, it))
 }
 
 //==========================Header design=========================
@@ -121,7 +120,7 @@
 }
 
 // ===========================Template================================
-#let template = {
+#let template(body) = {
   [
 
 //=========================Page formatting============================
@@ -182,9 +181,9 @@
 #set footnote.entry(gap: 0.6em, indent: 0em)
 
 // references bold and blue
-#show ref: it => strong(text(fill: blue, it))
-#show link: set text(hyphenate: false)
-#show cite: it => strong(text(fill: blue, it))
+#show ref: it => text(fill: blue, weight: "bold", it, )
+#show link: it => text(hyphenate: false, weight: "bold", fill: blue, it)
+#show cite: it => text(fill: blue, weight: "bold", it)
 
 #show bibliography: it => {
   show link: set text(blue)
@@ -197,5 +196,6 @@
 
 #set pagebreak(weak: true)
 
+#body //import the other chapters here
   ]
 }

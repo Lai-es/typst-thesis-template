@@ -8,7 +8,7 @@ authors = [
 license = "MIT"
 description = "Thesis with two-column bibliography, subfigures, and custom captions"
 repository = "https://github.com/Lai-es/typst-thesis-template"
-keywords = ["Bachelorarbeit", "Masterarbeit", "aio", "thesis"]
+keywords = ["Bachelorarbeit", "Masterarbeit", "aio", "thesis", "tübingen"]
 categories = ["thesis"]
 compiler = "0.14.0"
 

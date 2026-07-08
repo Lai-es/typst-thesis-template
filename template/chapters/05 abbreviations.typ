@@ -9,7 +9,7 @@
   #table(
     columns: 2,
     table.header([Abbreviation], [Meaning]),
-    [67], [nonsensical internet expression],
+    [AC/DC], [Alternating current/direct current],
     [...], [...],
     )
   ]

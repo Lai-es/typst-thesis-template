@@ -6,7 +6,7 @@
 
 #import "@preview/clean-ut:0.1.0" : * //imports the styling, show-outlines and show-header functions
 
-#show: template
+#let thesis = [//saves the combined chapters
 
 #include "chapters/01 title page.typ"
 
@@ -16,11 +16,11 @@
 
 #include "chapters/04 acknowledgements.typ"
 
-#show: outlines //shows table of contents, list of figures, list of tables
+#outlines //shows table of contents, list of figures, list of tables
 
 #include "chapters/05 abbreviations.typ"
 
-#show: page-header //shows the header from now on
+#page-header //shows the header from now on
 
 = #text(fill: red)[How to use this template and general typst tips] <tips>
 
@@ -47,5 +47,6 @@
 #include "chapters/10 bibliography.typ"
 
 #include "chapters/11 attachements.typ"
+]
 
-
+#show: template(thesis) //apply styling to the thesis
