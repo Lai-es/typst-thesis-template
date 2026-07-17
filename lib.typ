@@ -58,10 +58,9 @@
 // shorthand for the upright mu letter
 #let upmu = [~$upright(mu)$]
 
-//--------------Function to show outline, list of figures, list of tables and list of abbreviations
-#let outlines = {
+//================Function to show outline, list of figures, list of tables and list of abbreviations
+#let outlines(body) = {
 
-  show link: set text(weight: "medium", fill: black) //reset link styling for the outline
   //----Table of Contents
   page(numbering: "I")[
     #show outline.entry.where(level: 1): it => {//heading level 1 bold
@@ -87,7 +86,9 @@
     it.element.location(),
     it.indented(strong(it.prefix()), it.inner()),
   )
-
+  
+  show link: it => text(hyphenate: false, weight: "medium", fill: black, it)
+  show ref: it => text(fill: black, weight: "medium", it)
   //---------List of Images
   page(numbering: "I")[
     #heading([List of Images], numbering: none)
@@ -102,11 +103,25 @@
     #v(0.5em)
     #outline(title: none, target: figure.where(kind: table))
   ]
+
   pagebreak()
+
+  body
+}
+
+//=======================Link and reference design==================
+
+#let link-design(body) = {
+  // references bold and blue
+  show cite: it => text(fill: blue, weight: "bold", it)
+  show link: it => text(hyphenate: false, weight: "bold", fill: blue, it)
+  show ref: it => text(fill: blue, weight: "bold", it)
+
+  body
 }
 
 //==========================Header design=========================
-#let page-header = {
+#let page-header(body) = context {
   set page(
     header: [
       #set text(size: 12pt)
@@ -117,6 +132,7 @@
       #v(-0.9em) #line(length: 100%)
     ],
   )
+  body
 }
 
 // ===========================Template================================
@@ -180,16 +196,11 @@
 // footnotes definieren
 #set footnote.entry(gap: 0.6em, indent: 0em)
 
-// references bold and blue
-#show ref: it => text(fill: blue, weight: "bold", it, )
-#show link: it => text(hyphenate: false, weight: "bold", fill: blue, it)
-#show cite: it => text(fill: blue, weight: "bold", it)
-
 #show bibliography: it => {
   show link: set text(blue)
   show link: strong
   set text(size: 10pt, costs: (hyphenation: 150%))
-  columns(it)
+  columns(count: 2, it)
 }
 
 #show math.equation: set text(font: "Lete Sans Math")

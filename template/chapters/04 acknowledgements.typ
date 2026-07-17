@@ -4,7 +4,7 @@
     #v(0.6em)
   ]
 
-  Your text goes here
+  #lorem(60)
 
 ]
 

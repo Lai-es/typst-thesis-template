@@ -2,11 +2,10 @@
 // PDF version 1.7 and standard A-3b for attachments
 // to word https://www.ilovepdf.com/de/pdf_zu_word
 // pandoc online for single files
-//==========================imports======================
 
-#import "@preview/clean-ut:0.1.0" : * //imports the styling, show-outlines and show-header functions
+#import "@preview/clean-ut:0.1.0" : * 
 
-#let thesis = [//saves the combined chapters
+#show: template //apply styling to the thesis
 
 #include "chapters/01 title page.typ"
 
@@ -16,11 +15,13 @@
 
 #include "chapters/04 acknowledgements.typ"
 
-#outlines //shows table of contents, list of figures, list of tables
+#show: outlines //shows table of contents, list of figures, list of tables
+
+#show: link-design //shows links and references bold and blue from now on
 
 #include "chapters/05 abbreviations.typ"
 
-#page-header //shows the header from now on
+#show: page-header //shows the header from now on
 
 = #text(fill: red)[How to use this template and general typst tips] <tips>
 
@@ -47,6 +48,3 @@
 #include "chapters/10 bibliography.typ"
 
 #include "chapters/11 attachements.typ"
-]
-
-#show: template(thesis) //apply styling to the thesis
